@@ -35,6 +35,50 @@ namespace Aula3
                 {
                     Console.WriteLine("{0}\t{1}", item.f.Nome, item.g.Nome);
                 }
+
+                Console.WriteLine();
+
+
+
+
+
+
+                var textoBusca = "Led";
+
+                var query2 = from a in contexto.Artistas
+                            where a.Nome.Contains(textoBusca)
+                            select a;
+
+                foreach (var artista in query2)
+                {
+                    Console.WriteLine("{0}\t{1}", artista.ArtistaId, artista.Nome);
+                }
+
+
+
+
+
+
+
+                var query3 = from a in contexto.Artistas
+                            where a.Nome.Contains(textoBusca)
+                            select a;
+
+                foreach (var artista in query3)
+                {
+                    Console.WriteLine("{0}\t{1}", artista.ArtistaId, artista.Nome);
+                }
+
+                var query4 = contexto.Artistas.Where(a => a.Nome.Contains(textoBusca));
+
+                Console.WriteLine();
+
+                foreach (var artista in query4)
+                {
+                    Console.WriteLine("{0}\t{1}", artista.ArtistaId, artista.Nome);
+                }
+
+
             }
 
             Console.ReadKey();
