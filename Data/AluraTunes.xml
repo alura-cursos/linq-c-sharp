@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<AluraTunes>
+  <Generos>
+    <Genero>
+      <GeneroId>1</GeneroId>
+      <Nome>Rock</Nome>
+    </Genero>
+    <Genero>
+      <GeneroId>2</GeneroId>
+      <Nome>Reggae</Nome>
+    </Genero>
+    <Genero>
+      <GeneroId>3</GeneroId>
+      <Nome>Classica</Nome>
+    </Genero>
+  </Generos>
+  <Musicas>
+    <Musica>
+      <MusicaId>1154</MusicaId>
+      <Nome>Sweet Child O' Mine</Nome>
+      <GeneroId>1</GeneroId>
+      <Compositor>Guns n Roses</Compositor>
+      <Milissegundos>356424</Milissegundos>
+      <Bytes>5879347</Bytes>
+      <PrecoUnitario>0.99</PrecoUnitario>
+    </Musica>
+    <Musica>
+      <MusicaId>900</MusicaId>
+      <Nome>I Shot The Sheriff</Nome>
+      <GeneroId>2</GeneroId>
+      <Compositor>Marley</Compositor>
+      <Milissegundos>263862</Milissegundos>
+      <Bytes>8738973</Bytes>
+      <PrecoUnitario>0.99</PrecoUnitario>
+    </Musica>
+    <Musica>
+      <MusicaId>3445</MusicaId>
+      <Nome>Danubio Azul</Nome>
+      <GeneroId>3</GeneroId>
+      <Compositor>Johann Strauss II</Compositor>
+      <Milissegundos>526696</Milissegundos>
+      <Bytes>8610225</Bytes>
+      <PrecoUnitario>0.99</PrecoUnitario>
+    </Musica>    
+  </Musicas>
+</AluraTunes>
