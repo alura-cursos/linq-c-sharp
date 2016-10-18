@@ -14,7 +14,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{5A2F28F9-4
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aula2", "Aula2\Aula2.csproj", "{6DD17276-BA1C-46D0-B9D5-A5270E8EBC79}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AluraTunesEF", "AluraTunesData\AluraTunesEF.csproj", "{98D9F89D-CD55-4CC1-AA8E-E7E723687650}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AluraTunesEF", "AluraTunesEF\AluraTunesEF.csproj", "{98D9F89D-CD55-4CC1-AA8E-E7E723687650}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
