@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="9ff6bc4787b94fcca60c4910706f7ced" Name="Diagram1">
+        <EntityTypeShape EntityType="AluraTunesModel.Album" Width="1.5" PointX="3" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AluraTunesModel.Artista" Width="1.5" PointX="0.75" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="AluraTunesModel.Cliente" Width="1.5" PointX="3" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AluraTunesModel.Faixa" Width="1.5" PointX="5.25" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="AluraTunesModel.Funcionario" Width="1.5" PointX="0.75" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="AluraTunesModel.Genero" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AluraTunesModel.ItemNotaFiscal" Width="1.5" PointX="7.5" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="AluraTunesModel.NotaFiscal" Width="1.5" PointX="5.25" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="AluraTunesModel.Playlist" Width="1.5" PointX="7.5" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="AluraTunesModel.TipoMidia" Width="1.5" PointX="3" PointY="7.125" IsExpanded="true" />
+        <AssociationConnector Association="AluraTunesModel.FK_AlbumArtistaId" ManuallyRouted="false" />
+        <AssociationConnector Association="AluraTunesModel.FK_FaixaAlbumId" ManuallyRouted="false" />
+        <AssociationConnector Association="AluraTunesModel.FK_ClienteSuporteId" ManuallyRouted="false" />
+        <AssociationConnector Association="AluraTunesModel.FK_NotaFiscalClienteId" ManuallyRouted="false" />
+        <AssociationConnector Association="AluraTunesModel.FK_FaixaGeneroId" ManuallyRouted="false" />
+        <AssociationConnector Association="AluraTunesModel.FK_FaixaTipoMidiaId" ManuallyRouted="false" />
+        <AssociationConnector Association="AluraTunesModel.FK_ItemNotaFiscalFaixaId" ManuallyRouted="false" />
+        <AssociationConnector Association="AluraTunesModel.FK_FuncionarioSeReportaA" ManuallyRouted="false" />
+        <AssociationConnector Association="AluraTunesModel.FK_ItemNotaFiscalNotaFiscalId" ManuallyRouted="false" />
+        <AssociationConnector Association="AluraTunesModel.PlaylistFaixa" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

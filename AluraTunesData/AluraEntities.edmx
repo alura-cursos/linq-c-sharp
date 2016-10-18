@@ -1,0 +1,777 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="AluraTunesModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Album">
+          <Key>
+            <PropertyRef Name="AlbumId" />
+          </Key>
+          <Property Name="AlbumId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Titulo" Type="nvarchar" MaxLength="160" Nullable="false" />
+          <Property Name="ArtistaId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Artista">
+          <Key>
+            <PropertyRef Name="ArtistaId" />
+          </Key>
+          <Property Name="ArtistaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nome" Type="nvarchar" MaxLength="120" />
+        </EntityType>
+        <EntityType Name="Cliente">
+          <Key>
+            <PropertyRef Name="ClienteId" />
+          </Key>
+          <Property Name="ClienteId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PrimeiroNome" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="Sobrenome" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Empresa" Type="nvarchar" MaxLength="80" />
+          <Property Name="Endereco" Type="nvarchar" MaxLength="70" />
+          <Property Name="Cidade" Type="nvarchar" MaxLength="40" />
+          <Property Name="Estado" Type="nvarchar" MaxLength="40" />
+          <Property Name="Pais" Type="nvarchar" MaxLength="40" />
+          <Property Name="CEP" Type="nvarchar" MaxLength="10" />
+          <Property Name="Fone" Type="nvarchar" MaxLength="24" />
+          <Property Name="Fax" Type="nvarchar" MaxLength="24" />
+          <Property Name="Email" Type="nvarchar" MaxLength="60" Nullable="false" />
+          <Property Name="SuporteId" Type="int" />
+        </EntityType>
+        <EntityType Name="Faixa">
+          <Key>
+            <PropertyRef Name="FaixaId" />
+          </Key>
+          <Property Name="FaixaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nome" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="AlbumId" Type="int" />
+          <Property Name="TipoMidiaId" Type="int" Nullable="false" />
+          <Property Name="GeneroId" Type="int" />
+          <Property Name="Compositor" Type="nvarchar" MaxLength="220" />
+          <Property Name="Milissegundos" Type="int" Nullable="false" />
+          <Property Name="Bytes" Type="int" />
+          <Property Name="PrecoUnitario" Type="numeric" Precision="10" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Funcionario">
+          <Key>
+            <PropertyRef Name="FuncionarioId" />
+          </Key>
+          <Property Name="FuncionarioId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Sobrenome" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="PrimeiroNome" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Titulo" Type="nvarchar" MaxLength="30" />
+          <Property Name="SeReportaA" Type="int" />
+          <Property Name="DataNascimento" Type="datetime" />
+          <Property Name="DataAdmissao" Type="datetime" />
+          <Property Name="Endereco" Type="nvarchar" MaxLength="70" />
+          <Property Name="Cidade" Type="nvarchar" MaxLength="40" />
+          <Property Name="Estado" Type="nvarchar" MaxLength="40" />
+          <Property Name="Pais" Type="nvarchar" MaxLength="40" />
+          <Property Name="CEP" Type="nvarchar" MaxLength="10" />
+          <Property Name="Fone" Type="nvarchar" MaxLength="24" />
+          <Property Name="Fax" Type="nvarchar" MaxLength="24" />
+          <Property Name="Email" Type="nvarchar" MaxLength="60" />
+        </EntityType>
+        <EntityType Name="Genero">
+          <Key>
+            <PropertyRef Name="GeneroId" />
+          </Key>
+          <Property Name="GeneroId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nome" Type="nvarchar" MaxLength="120" />
+        </EntityType>
+        <EntityType Name="ItemNotaFiscal">
+          <Key>
+            <PropertyRef Name="ItemNotaFiscalId" />
+          </Key>
+          <Property Name="ItemNotaFiscalId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NotaFiscalId" Type="int" Nullable="false" />
+          <Property Name="FaixaId" Type="int" Nullable="false" />
+          <Property Name="PrecoUnitario" Type="numeric" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="Quantidade" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NotaFiscal">
+          <Key>
+            <PropertyRef Name="NotaFiscalId" />
+          </Key>
+          <Property Name="NotaFiscalId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ClienteId" Type="int" Nullable="false" />
+          <Property Name="DataNotaFiscal" Type="datetime" Nullable="false" />
+          <Property Name="Endereco" Type="nvarchar" MaxLength="70" />
+          <Property Name="Cidade" Type="nvarchar" MaxLength="40" />
+          <Property Name="Estado" Type="nvarchar" MaxLength="40" />
+          <Property Name="Pais" Type="nvarchar" MaxLength="40" />
+          <Property Name="CEP" Type="nvarchar" MaxLength="10" />
+          <Property Name="Total" Type="numeric" Precision="10" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Playlist">
+          <Key>
+            <PropertyRef Name="PlaylistId" />
+          </Key>
+          <Property Name="PlaylistId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nome" Type="nvarchar" MaxLength="120" />
+        </EntityType>
+        <EntityType Name="PlaylistFaixa">
+          <Key>
+            <PropertyRef Name="PlaylistId" />
+            <PropertyRef Name="FaixaId" />
+          </Key>
+          <Property Name="PlaylistId" Type="int" Nullable="false" />
+          <Property Name="FaixaId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TipoMidia">
+          <Key>
+            <PropertyRef Name="TipoMidiaId" />
+          </Key>
+          <Property Name="TipoMidiaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nome" Type="nvarchar" MaxLength="120" />
+        </EntityType>
+        <Association Name="FK_AlbumArtistaId">
+          <End Role="Artista" Type="Self.Artista" Multiplicity="1" />
+          <End Role="Album" Type="Self.Album" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Artista">
+              <PropertyRef Name="ArtistaId" />
+            </Principal>
+            <Dependent Role="Album">
+              <PropertyRef Name="ArtistaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClienteSuporteId">
+          <End Role="Funcionario" Type="Self.Funcionario" Multiplicity="0..1" />
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Funcionario">
+              <PropertyRef Name="FuncionarioId" />
+            </Principal>
+            <Dependent Role="Cliente">
+              <PropertyRef Name="SuporteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FaixaAlbumId">
+          <End Role="Album" Type="Self.Album" Multiplicity="0..1" />
+          <End Role="Faixa" Type="Self.Faixa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Album">
+              <PropertyRef Name="AlbumId" />
+            </Principal>
+            <Dependent Role="Faixa">
+              <PropertyRef Name="AlbumId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FaixaGeneroId">
+          <End Role="Genero" Type="Self.Genero" Multiplicity="0..1" />
+          <End Role="Faixa" Type="Self.Faixa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Genero">
+              <PropertyRef Name="GeneroId" />
+            </Principal>
+            <Dependent Role="Faixa">
+              <PropertyRef Name="GeneroId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FaixaTipoMidiaId">
+          <End Role="TipoMidia" Type="Self.TipoMidia" Multiplicity="1" />
+          <End Role="Faixa" Type="Self.Faixa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoMidia">
+              <PropertyRef Name="TipoMidiaId" />
+            </Principal>
+            <Dependent Role="Faixa">
+              <PropertyRef Name="TipoMidiaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FuncionarioSeReportaA">
+          <End Role="Funcionario" Type="Self.Funcionario" Multiplicity="0..1" />
+          <End Role="Funcionario1" Type="Self.Funcionario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Funcionario">
+              <PropertyRef Name="FuncionarioId" />
+            </Principal>
+            <Dependent Role="Funcionario1">
+              <PropertyRef Name="SeReportaA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ItemNotaFiscalFaixaId">
+          <End Role="Faixa" Type="Self.Faixa" Multiplicity="1" />
+          <End Role="ItemNotaFiscal" Type="Self.ItemNotaFiscal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Faixa">
+              <PropertyRef Name="FaixaId" />
+            </Principal>
+            <Dependent Role="ItemNotaFiscal">
+              <PropertyRef Name="FaixaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ItemNotaFiscalNotaFiscalId">
+          <End Role="NotaFiscal" Type="Self.NotaFiscal" Multiplicity="1" />
+          <End Role="ItemNotaFiscal" Type="Self.ItemNotaFiscal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NotaFiscal">
+              <PropertyRef Name="NotaFiscalId" />
+            </Principal>
+            <Dependent Role="ItemNotaFiscal">
+              <PropertyRef Name="NotaFiscalId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NotaFiscalClienteId">
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="1" />
+          <End Role="NotaFiscal" Type="Self.NotaFiscal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="ClienteId" />
+            </Principal>
+            <Dependent Role="NotaFiscal">
+              <PropertyRef Name="ClienteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PlaylistFaixaFaixaId">
+          <End Role="Faixa" Type="Self.Faixa" Multiplicity="1" />
+          <End Role="PlaylistFaixa" Type="Self.PlaylistFaixa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Faixa">
+              <PropertyRef Name="FaixaId" />
+            </Principal>
+            <Dependent Role="PlaylistFaixa">
+              <PropertyRef Name="FaixaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PlaylistFaixaPlaylistId">
+          <End Role="Playlist" Type="Self.Playlist" Multiplicity="1" />
+          <End Role="PlaylistFaixa" Type="Self.PlaylistFaixa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Playlist">
+              <PropertyRef Name="PlaylistId" />
+            </Principal>
+            <Dependent Role="PlaylistFaixa">
+              <PropertyRef Name="PlaylistId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AluraTunesModelStoreContainer">
+          <EntitySet Name="Album" EntityType="Self.Album" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Artista" EntityType="Self.Artista" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cliente" EntityType="Self.Cliente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Faixa" EntityType="Self.Faixa" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Funcionario" EntityType="Self.Funcionario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Genero" EntityType="Self.Genero" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ItemNotaFiscal" EntityType="Self.ItemNotaFiscal" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NotaFiscal" EntityType="Self.NotaFiscal" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Playlist" EntityType="Self.Playlist" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PlaylistFaixa" EntityType="Self.PlaylistFaixa" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipoMidia" EntityType="Self.TipoMidia" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_AlbumArtistaId" Association="Self.FK_AlbumArtistaId">
+            <End Role="Artista" EntitySet="Artista" />
+            <End Role="Album" EntitySet="Album" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClienteSuporteId" Association="Self.FK_ClienteSuporteId">
+            <End Role="Funcionario" EntitySet="Funcionario" />
+            <End Role="Cliente" EntitySet="Cliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FaixaAlbumId" Association="Self.FK_FaixaAlbumId">
+            <End Role="Album" EntitySet="Album" />
+            <End Role="Faixa" EntitySet="Faixa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FaixaGeneroId" Association="Self.FK_FaixaGeneroId">
+            <End Role="Genero" EntitySet="Genero" />
+            <End Role="Faixa" EntitySet="Faixa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FaixaTipoMidiaId" Association="Self.FK_FaixaTipoMidiaId">
+            <End Role="TipoMidia" EntitySet="TipoMidia" />
+            <End Role="Faixa" EntitySet="Faixa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FuncionarioSeReportaA" Association="Self.FK_FuncionarioSeReportaA">
+            <End Role="Funcionario" EntitySet="Funcionario" />
+            <End Role="Funcionario1" EntitySet="Funcionario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemNotaFiscalFaixaId" Association="Self.FK_ItemNotaFiscalFaixaId">
+            <End Role="Faixa" EntitySet="Faixa" />
+            <End Role="ItemNotaFiscal" EntitySet="ItemNotaFiscal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemNotaFiscalNotaFiscalId" Association="Self.FK_ItemNotaFiscalNotaFiscalId">
+            <End Role="NotaFiscal" EntitySet="NotaFiscal" />
+            <End Role="ItemNotaFiscal" EntitySet="ItemNotaFiscal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NotaFiscalClienteId" Association="Self.FK_NotaFiscalClienteId">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="NotaFiscal" EntitySet="NotaFiscal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PlaylistFaixaFaixaId" Association="Self.FK_PlaylistFaixaFaixaId">
+            <End Role="Faixa" EntitySet="Faixa" />
+            <End Role="PlaylistFaixa" EntitySet="PlaylistFaixa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PlaylistFaixaPlaylistId" Association="Self.FK_PlaylistFaixaPlaylistId">
+            <End Role="Playlist" EntitySet="Playlist" />
+            <End Role="PlaylistFaixa" EntitySet="PlaylistFaixa" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AluraTunesModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Album">
+          <Key>
+            <PropertyRef Name="AlbumId" />
+          </Key>
+          <Property Name="AlbumId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Titulo" Type="String" MaxLength="160" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ArtistaId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Artista" Relationship="Self.FK_AlbumArtistaId" FromRole="Album" ToRole="Artista" />
+          <NavigationProperty Name="Faixas" Relationship="Self.FK_FaixaAlbumId" FromRole="Album" ToRole="Faixa" />
+        </EntityType>
+        <EntityType Name="Artista">
+          <Key>
+            <PropertyRef Name="ArtistaId" />
+          </Key>
+          <Property Name="ArtistaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nome" Type="String" MaxLength="120" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Albums" Relationship="Self.FK_AlbumArtistaId" FromRole="Artista" ToRole="Album" />
+        </EntityType>
+        <EntityType Name="Cliente">
+          <Key>
+            <PropertyRef Name="ClienteId" />
+          </Key>
+          <Property Name="ClienteId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PrimeiroNome" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Sobrenome" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Empresa" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="Endereco" Type="String" MaxLength="70" FixedLength="false" Unicode="true" />
+          <Property Name="Cidade" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="Estado" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="Pais" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="CEP" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Fone" Type="String" MaxLength="24" FixedLength="false" Unicode="true" />
+          <Property Name="Fax" Type="String" MaxLength="24" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="60" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SuporteId" Type="Int32" />
+          <NavigationProperty Name="Funcionario" Relationship="Self.FK_ClienteSuporteId" FromRole="Cliente" ToRole="Funcionario" />
+          <NavigationProperty Name="NotasFiscais" Relationship="Self.FK_NotaFiscalClienteId" FromRole="Cliente" ToRole="NotaFiscal" />
+        </EntityType>
+        <EntityType Name="Faixa">
+          <Key>
+            <PropertyRef Name="FaixaId" />
+          </Key>
+          <Property Name="FaixaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nome" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AlbumId" Type="Int32" />
+          <Property Name="TipoMidiaId" Type="Int32" Nullable="false" />
+          <Property Name="GeneroId" Type="Int32" />
+          <Property Name="Compositor" Type="String" MaxLength="220" FixedLength="false" Unicode="true" />
+          <Property Name="Milissegundos" Type="Int32" Nullable="false" />
+          <Property Name="Bytes" Type="Int32" />
+          <Property Name="PrecoUnitario" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <NavigationProperty Name="Album" Relationship="Self.FK_FaixaAlbumId" FromRole="Faixa" ToRole="Album" />
+          <NavigationProperty Name="Genero" Relationship="Self.FK_FaixaGeneroId" FromRole="Faixa" ToRole="Genero" />
+          <NavigationProperty Name="TipoMidia" Relationship="Self.FK_FaixaTipoMidiaId" FromRole="Faixa" ToRole="TipoMidia" />
+          <NavigationProperty Name="ItemsNotaFiscal" Relationship="Self.FK_ItemNotaFiscalFaixaId" FromRole="Faixa" ToRole="ItemNotaFiscal" />
+          <NavigationProperty Name="Playlists" Relationship="Self.PlaylistFaixa" FromRole="Faixa" ToRole="Playlist" />
+        </EntityType>
+        <EntityType Name="Funcionario">
+          <Key>
+            <PropertyRef Name="FuncionarioId" />
+          </Key>
+          <Property Name="FuncionarioId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Sobrenome" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PrimeiroNome" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Titulo" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="SeReportaA" Type="Int32" />
+          <Property Name="DataNascimento" Type="DateTime" Precision="3" />
+          <Property Name="DataAdmissao" Type="DateTime" Precision="3" />
+          <Property Name="Endereco" Type="String" MaxLength="70" FixedLength="false" Unicode="true" />
+          <Property Name="Cidade" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="Estado" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="Pais" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="CEP" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Fone" Type="String" MaxLength="24" FixedLength="false" Unicode="true" />
+          <Property Name="Fax" Type="String" MaxLength="24" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Clientes" Relationship="Self.FK_ClienteSuporteId" FromRole="Funcionario" ToRole="Cliente" />
+          <NavigationProperty Name="Funcionario1" Relationship="Self.FK_FuncionarioSeReportaA" FromRole="Funcionario" ToRole="Funcionario1" />
+          <NavigationProperty Name="Funcionario2" Relationship="Self.FK_FuncionarioSeReportaA" FromRole="Funcionario1" ToRole="Funcionario" />
+        </EntityType>
+        <EntityType Name="Genero">
+          <Key>
+            <PropertyRef Name="GeneroId" />
+          </Key>
+          <Property Name="GeneroId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nome" Type="String" MaxLength="120" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Faixas" Relationship="Self.FK_FaixaGeneroId" FromRole="Genero" ToRole="Faixa" />
+        </EntityType>
+        <EntityType Name="ItemNotaFiscal">
+          <Key>
+            <PropertyRef Name="ItemNotaFiscalId" />
+          </Key>
+          <Property Name="ItemNotaFiscalId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NotaFiscalId" Type="Int32" Nullable="false" />
+          <Property Name="FaixaId" Type="Int32" Nullable="false" />
+          <Property Name="PrecoUnitario" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="Quantidade" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Faixa" Relationship="Self.FK_ItemNotaFiscalFaixaId" FromRole="ItemNotaFiscal" ToRole="Faixa" />
+          <NavigationProperty Name="NotaFiscal" Relationship="Self.FK_ItemNotaFiscalNotaFiscalId" FromRole="ItemNotaFiscal" ToRole="NotaFiscal" />
+        </EntityType>
+        <EntityType Name="NotaFiscal">
+          <Key>
+            <PropertyRef Name="NotaFiscalId" />
+          </Key>
+          <Property Name="NotaFiscalId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClienteId" Type="Int32" Nullable="false" />
+          <Property Name="DataNotaFiscal" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Endereco" Type="String" MaxLength="70" FixedLength="false" Unicode="true" />
+          <Property Name="Cidade" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="Estado" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="Pais" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="CEP" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Total" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <NavigationProperty Name="Cliente" Relationship="Self.FK_NotaFiscalClienteId" FromRole="NotaFiscal" ToRole="Cliente" />
+          <NavigationProperty Name="ItemsNotaFiscal" Relationship="Self.FK_ItemNotaFiscalNotaFiscalId" FromRole="NotaFiscal" ToRole="ItemNotaFiscal" />
+        </EntityType>
+        <EntityType Name="Playlist">
+          <Key>
+            <PropertyRef Name="PlaylistId" />
+          </Key>
+          <Property Name="PlaylistId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nome" Type="String" MaxLength="120" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Faixas" Relationship="Self.PlaylistFaixa" FromRole="Playlist" ToRole="Faixa" />
+        </EntityType>
+        <EntityType Name="TipoMidia">
+          <Key>
+            <PropertyRef Name="TipoMidiaId" />
+          </Key>
+          <Property Name="TipoMidiaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nome" Type="String" MaxLength="120" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Faixas" Relationship="Self.FK_FaixaTipoMidiaId" FromRole="TipoMidia" ToRole="Faixa" />
+        </EntityType>
+        <Association Name="FK_AlbumArtistaId">
+          <End Role="Artista" Type="Self.Artista" Multiplicity="1" />
+          <End Role="Album" Type="Self.Album" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Artista">
+              <PropertyRef Name="ArtistaId" />
+            </Principal>
+            <Dependent Role="Album">
+              <PropertyRef Name="ArtistaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FaixaAlbumId">
+          <End Role="Album" Type="Self.Album" Multiplicity="0..1" />
+          <End Role="Faixa" Type="Self.Faixa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Album">
+              <PropertyRef Name="AlbumId" />
+            </Principal>
+            <Dependent Role="Faixa">
+              <PropertyRef Name="AlbumId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClienteSuporteId">
+          <End Role="Funcionario" Type="Self.Funcionario" Multiplicity="0..1" />
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Funcionario">
+              <PropertyRef Name="FuncionarioId" />
+            </Principal>
+            <Dependent Role="Cliente">
+              <PropertyRef Name="SuporteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NotaFiscalClienteId">
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="1" />
+          <End Role="NotaFiscal" Type="Self.NotaFiscal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="ClienteId" />
+            </Principal>
+            <Dependent Role="NotaFiscal">
+              <PropertyRef Name="ClienteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FaixaGeneroId">
+          <End Role="Genero" Type="Self.Genero" Multiplicity="0..1" />
+          <End Role="Faixa" Type="Self.Faixa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Genero">
+              <PropertyRef Name="GeneroId" />
+            </Principal>
+            <Dependent Role="Faixa">
+              <PropertyRef Name="GeneroId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FaixaTipoMidiaId">
+          <End Role="TipoMidia" Type="Self.TipoMidia" Multiplicity="1" />
+          <End Role="Faixa" Type="Self.Faixa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoMidia">
+              <PropertyRef Name="TipoMidiaId" />
+            </Principal>
+            <Dependent Role="Faixa">
+              <PropertyRef Name="TipoMidiaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ItemNotaFiscalFaixaId">
+          <End Role="Faixa" Type="Self.Faixa" Multiplicity="1" />
+          <End Role="ItemNotaFiscal" Type="Self.ItemNotaFiscal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Faixa">
+              <PropertyRef Name="FaixaId" />
+            </Principal>
+            <Dependent Role="ItemNotaFiscal">
+              <PropertyRef Name="FaixaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FuncionarioSeReportaA">
+          <End Role="Funcionario" Type="Self.Funcionario" Multiplicity="0..1" />
+          <End Role="Funcionario1" Type="Self.Funcionario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Funcionario">
+              <PropertyRef Name="FuncionarioId" />
+            </Principal>
+            <Dependent Role="Funcionario1">
+              <PropertyRef Name="SeReportaA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ItemNotaFiscalNotaFiscalId">
+          <End Role="NotaFiscal" Type="Self.NotaFiscal" Multiplicity="1" />
+          <End Role="ItemNotaFiscal" Type="Self.ItemNotaFiscal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NotaFiscal">
+              <PropertyRef Name="NotaFiscalId" />
+            </Principal>
+            <Dependent Role="ItemNotaFiscal">
+              <PropertyRef Name="NotaFiscalId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PlaylistFaixa">
+          <End Role="Faixa" Type="Self.Faixa" Multiplicity="*" />
+          <End Role="Playlist" Type="Self.Playlist" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="AluraTunesEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Albums" EntityType="Self.Album" />
+          <EntitySet Name="Artistas" EntityType="Self.Artista" />
+          <EntitySet Name="Clientes" EntityType="Self.Cliente" />
+          <EntitySet Name="Faixas" EntityType="Self.Faixa" />
+          <EntitySet Name="Funcionarios" EntityType="Self.Funcionario" />
+          <EntitySet Name="Generoes" EntityType="Self.Genero" />
+          <EntitySet Name="ItemsNotaFiscal" EntityType="Self.ItemNotaFiscal" />
+          <EntitySet Name="NotasFiscais" EntityType="Self.NotaFiscal" />
+          <EntitySet Name="Playlists" EntityType="Self.Playlist" />
+          <EntitySet Name="TipoMidias" EntityType="Self.TipoMidia" />
+          <AssociationSet Name="FK_AlbumArtistaId" Association="Self.FK_AlbumArtistaId">
+            <End Role="Artista" EntitySet="Artistas" />
+            <End Role="Album" EntitySet="Albums" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FaixaAlbumId" Association="Self.FK_FaixaAlbumId">
+            <End Role="Album" EntitySet="Albums" />
+            <End Role="Faixa" EntitySet="Faixas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClienteSuporteId" Association="Self.FK_ClienteSuporteId">
+            <End Role="Funcionario" EntitySet="Funcionarios" />
+            <End Role="Cliente" EntitySet="Clientes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NotaFiscalClienteId" Association="Self.FK_NotaFiscalClienteId">
+            <End Role="Cliente" EntitySet="Clientes" />
+            <End Role="NotaFiscal" EntitySet="NotasFiscais" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FaixaGeneroId" Association="Self.FK_FaixaGeneroId">
+            <End Role="Genero" EntitySet="Generoes" />
+            <End Role="Faixa" EntitySet="Faixas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FaixaTipoMidiaId" Association="Self.FK_FaixaTipoMidiaId">
+            <End Role="TipoMidia" EntitySet="TipoMidias" />
+            <End Role="Faixa" EntitySet="Faixas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemNotaFiscalFaixaId" Association="Self.FK_ItemNotaFiscalFaixaId">
+            <End Role="Faixa" EntitySet="Faixas" />
+            <End Role="ItemNotaFiscal" EntitySet="ItemsNotaFiscal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FuncionarioSeReportaA" Association="Self.FK_FuncionarioSeReportaA">
+            <End Role="Funcionario" EntitySet="Funcionarios" />
+            <End Role="Funcionario1" EntitySet="Funcionarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemNotaFiscalNotaFiscalId" Association="Self.FK_ItemNotaFiscalNotaFiscalId">
+            <End Role="NotaFiscal" EntitySet="NotasFiscais" />
+            <End Role="ItemNotaFiscal" EntitySet="ItemsNotaFiscal" />
+          </AssociationSet>
+          <AssociationSet Name="PlaylistFaixa" Association="Self.PlaylistFaixa">
+            <End Role="Faixa" EntitySet="Faixas" />
+            <End Role="Playlist" EntitySet="Playlists" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="AluraTunesModelStoreContainer" CdmEntityContainer="AluraTunesEntities">
+          <EntitySetMapping Name="Albums">
+            <EntityTypeMapping TypeName="AluraTunesModel.Album">
+              <MappingFragment StoreEntitySet="Album">
+                <ScalarProperty Name="AlbumId" ColumnName="AlbumId" />
+                <ScalarProperty Name="Titulo" ColumnName="Titulo" />
+                <ScalarProperty Name="ArtistaId" ColumnName="ArtistaId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Artistas">
+            <EntityTypeMapping TypeName="AluraTunesModel.Artista">
+              <MappingFragment StoreEntitySet="Artista">
+                <ScalarProperty Name="ArtistaId" ColumnName="ArtistaId" />
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Clientes">
+            <EntityTypeMapping TypeName="AluraTunesModel.Cliente">
+              <MappingFragment StoreEntitySet="Cliente">
+                <ScalarProperty Name="ClienteId" ColumnName="ClienteId" />
+                <ScalarProperty Name="PrimeiroNome" ColumnName="PrimeiroNome" />
+                <ScalarProperty Name="Sobrenome" ColumnName="Sobrenome" />
+                <ScalarProperty Name="Empresa" ColumnName="Empresa" />
+                <ScalarProperty Name="Endereco" ColumnName="Endereco" />
+                <ScalarProperty Name="Cidade" ColumnName="Cidade" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Pais" ColumnName="Pais" />
+                <ScalarProperty Name="CEP" ColumnName="CEP" />
+                <ScalarProperty Name="Fone" ColumnName="Fone" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="SuporteId" ColumnName="SuporteId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Faixas">
+            <EntityTypeMapping TypeName="AluraTunesModel.Faixa">
+              <MappingFragment StoreEntitySet="Faixa">
+                <ScalarProperty Name="FaixaId" ColumnName="FaixaId" />
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+                <ScalarProperty Name="AlbumId" ColumnName="AlbumId" />
+                <ScalarProperty Name="TipoMidiaId" ColumnName="TipoMidiaId" />
+                <ScalarProperty Name="GeneroId" ColumnName="GeneroId" />
+                <ScalarProperty Name="Compositor" ColumnName="Compositor" />
+                <ScalarProperty Name="Milissegundos" ColumnName="Milissegundos" />
+                <ScalarProperty Name="Bytes" ColumnName="Bytes" />
+                <ScalarProperty Name="PrecoUnitario" ColumnName="PrecoUnitario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Funcionarios">
+            <EntityTypeMapping TypeName="AluraTunesModel.Funcionario">
+              <MappingFragment StoreEntitySet="Funcionario">
+                <ScalarProperty Name="FuncionarioId" ColumnName="FuncionarioId" />
+                <ScalarProperty Name="Sobrenome" ColumnName="Sobrenome" />
+                <ScalarProperty Name="PrimeiroNome" ColumnName="PrimeiroNome" />
+                <ScalarProperty Name="Titulo" ColumnName="Titulo" />
+                <ScalarProperty Name="SeReportaA" ColumnName="SeReportaA" />
+                <ScalarProperty Name="DataNascimento" ColumnName="DataNascimento" />
+                <ScalarProperty Name="DataAdmissao" ColumnName="DataAdmissao" />
+                <ScalarProperty Name="Endereco" ColumnName="Endereco" />
+                <ScalarProperty Name="Cidade" ColumnName="Cidade" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Pais" ColumnName="Pais" />
+                <ScalarProperty Name="CEP" ColumnName="CEP" />
+                <ScalarProperty Name="Fone" ColumnName="Fone" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Generoes">
+            <EntityTypeMapping TypeName="AluraTunesModel.Genero">
+              <MappingFragment StoreEntitySet="Genero">
+                <ScalarProperty Name="GeneroId" ColumnName="GeneroId" />
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ItemsNotaFiscal">
+            <EntityTypeMapping TypeName="AluraTunesModel.ItemNotaFiscal">
+              <MappingFragment StoreEntitySet="ItemNotaFiscal">
+                <ScalarProperty Name="ItemNotaFiscalId" ColumnName="ItemNotaFiscalId" />
+                <ScalarProperty Name="NotaFiscalId" ColumnName="NotaFiscalId" />
+                <ScalarProperty Name="FaixaId" ColumnName="FaixaId" />
+                <ScalarProperty Name="PrecoUnitario" ColumnName="PrecoUnitario" />
+                <ScalarProperty Name="Quantidade" ColumnName="Quantidade" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NotasFiscais">
+            <EntityTypeMapping TypeName="AluraTunesModel.NotaFiscal">
+              <MappingFragment StoreEntitySet="NotaFiscal">
+                <ScalarProperty Name="NotaFiscalId" ColumnName="NotaFiscalId" />
+                <ScalarProperty Name="ClienteId" ColumnName="ClienteId" />
+                <ScalarProperty Name="DataNotaFiscal" ColumnName="DataNotaFiscal" />
+                <ScalarProperty Name="Endereco" ColumnName="Endereco" />
+                <ScalarProperty Name="Cidade" ColumnName="Cidade" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Pais" ColumnName="Pais" />
+                <ScalarProperty Name="CEP" ColumnName="CEP" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Playlists">
+            <EntityTypeMapping TypeName="AluraTunesModel.Playlist">
+              <MappingFragment StoreEntitySet="Playlist">
+                <ScalarProperty Name="PlaylistId" ColumnName="PlaylistId" />
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoMidias">
+            <EntityTypeMapping TypeName="AluraTunesModel.TipoMidia">
+              <MappingFragment StoreEntitySet="TipoMidia">
+                <ScalarProperty Name="TipoMidiaId" ColumnName="TipoMidiaId" />
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="PlaylistFaixa" TypeName="AluraTunesModel.PlaylistFaixa" StoreEntitySet="PlaylistFaixa">
+            <EndProperty Name="Faixa">
+              <ScalarProperty Name="FaixaId" ColumnName="FaixaId" />
+            </EndProperty>
+            <EndProperty Name="Playlist">
+              <ScalarProperty Name="PlaylistId" ColumnName="PlaylistId" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
