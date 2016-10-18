@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace AluraTunesEF
+namespace AluraTunesData
 {
     using System;
     using System.Collections.Generic;
@@ -17,7 +17,7 @@ namespace AluraTunesEF
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Faixa()
         {
-            this.ItemsNotaFiscal = new HashSet<ItemNotaFiscal>();
+            this.ItemNotaFiscals = new HashSet<ItemNotaFiscal>();
             this.Playlists = new HashSet<Playlist>();
         }
     
@@ -35,7 +35,7 @@ namespace AluraTunesEF
         public virtual Genero Genero { get; set; }
         public virtual TipoMidia TipoMidia { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ItemNotaFiscal> ItemsNotaFiscal { get; set; }
+        public virtual ICollection<ItemNotaFiscal> ItemNotaFiscals { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Playlist> Playlists { get; set; }
     }

@@ -355,7 +355,7 @@
           <Property Name="Email" Type="String" MaxLength="60" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="SuporteId" Type="Int32" />
           <NavigationProperty Name="Funcionario" Relationship="Self.FK_ClienteSuporteId" FromRole="Cliente" ToRole="Funcionario" />
-          <NavigationProperty Name="NotasFiscais" Relationship="Self.FK_NotaFiscalClienteId" FromRole="Cliente" ToRole="NotaFiscal" />
+          <NavigationProperty Name="NotaFiscals" Relationship="Self.FK_NotaFiscalClienteId" FromRole="Cliente" ToRole="NotaFiscal" />
         </EntityType>
         <EntityType Name="Faixa">
           <Key>
@@ -373,7 +373,7 @@
           <NavigationProperty Name="Album" Relationship="Self.FK_FaixaAlbumId" FromRole="Faixa" ToRole="Album" />
           <NavigationProperty Name="Genero" Relationship="Self.FK_FaixaGeneroId" FromRole="Faixa" ToRole="Genero" />
           <NavigationProperty Name="TipoMidia" Relationship="Self.FK_FaixaTipoMidiaId" FromRole="Faixa" ToRole="TipoMidia" />
-          <NavigationProperty Name="ItemsNotaFiscal" Relationship="Self.FK_ItemNotaFiscalFaixaId" FromRole="Faixa" ToRole="ItemNotaFiscal" />
+          <NavigationProperty Name="ItemNotaFiscals" Relationship="Self.FK_ItemNotaFiscalFaixaId" FromRole="Faixa" ToRole="ItemNotaFiscal" />
           <NavigationProperty Name="Playlists" Relationship="Self.PlaylistFaixa" FromRole="Faixa" ToRole="Playlist" />
         </EntityType>
         <EntityType Name="Funcionario">
@@ -433,7 +433,7 @@
           <Property Name="CEP" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="Total" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
           <NavigationProperty Name="Cliente" Relationship="Self.FK_NotaFiscalClienteId" FromRole="NotaFiscal" ToRole="Cliente" />
-          <NavigationProperty Name="ItemsNotaFiscal" Relationship="Self.FK_ItemNotaFiscalNotaFiscalId" FromRole="NotaFiscal" ToRole="ItemNotaFiscal" />
+          <NavigationProperty Name="ItemNotaFiscals" Relationship="Self.FK_ItemNotaFiscalNotaFiscalId" FromRole="NotaFiscal" ToRole="ItemNotaFiscal" />
         </EntityType>
         <EntityType Name="Playlist">
           <Key>
@@ -570,8 +570,8 @@
           <EntitySet Name="Faixas" EntityType="Self.Faixa" />
           <EntitySet Name="Funcionarios" EntityType="Self.Funcionario" />
           <EntitySet Name="Generoes" EntityType="Self.Genero" />
-          <EntitySet Name="ItemsNotaFiscal" EntityType="Self.ItemNotaFiscal" />
-          <EntitySet Name="NotasFiscais" EntityType="Self.NotaFiscal" />
+          <EntitySet Name="ItemNotaFiscals" EntityType="Self.ItemNotaFiscal" />
+          <EntitySet Name="NotaFiscals" EntityType="Self.NotaFiscal" />
           <EntitySet Name="Playlists" EntityType="Self.Playlist" />
           <EntitySet Name="TipoMidias" EntityType="Self.TipoMidia" />
           <AssociationSet Name="FK_AlbumArtistaId" Association="Self.FK_AlbumArtistaId">
@@ -588,7 +588,7 @@
           </AssociationSet>
           <AssociationSet Name="FK_NotaFiscalClienteId" Association="Self.FK_NotaFiscalClienteId">
             <End Role="Cliente" EntitySet="Clientes" />
-            <End Role="NotaFiscal" EntitySet="NotasFiscais" />
+            <End Role="NotaFiscal" EntitySet="NotaFiscals" />
           </AssociationSet>
           <AssociationSet Name="FK_FaixaGeneroId" Association="Self.FK_FaixaGeneroId">
             <End Role="Genero" EntitySet="Generoes" />
@@ -600,15 +600,15 @@
           </AssociationSet>
           <AssociationSet Name="FK_ItemNotaFiscalFaixaId" Association="Self.FK_ItemNotaFiscalFaixaId">
             <End Role="Faixa" EntitySet="Faixas" />
-            <End Role="ItemNotaFiscal" EntitySet="ItemsNotaFiscal" />
+            <End Role="ItemNotaFiscal" EntitySet="ItemNotaFiscals" />
           </AssociationSet>
           <AssociationSet Name="FK_FuncionarioSeReportaA" Association="Self.FK_FuncionarioSeReportaA">
             <End Role="Funcionario" EntitySet="Funcionarios" />
             <End Role="Funcionario1" EntitySet="Funcionarios" />
           </AssociationSet>
           <AssociationSet Name="FK_ItemNotaFiscalNotaFiscalId" Association="Self.FK_ItemNotaFiscalNotaFiscalId">
-            <End Role="NotaFiscal" EntitySet="NotasFiscais" />
-            <End Role="ItemNotaFiscal" EntitySet="ItemsNotaFiscal" />
+            <End Role="NotaFiscal" EntitySet="NotaFiscals" />
+            <End Role="ItemNotaFiscal" EntitySet="ItemNotaFiscals" />
           </AssociationSet>
           <AssociationSet Name="PlaylistFaixa" Association="Self.PlaylistFaixa">
             <End Role="Faixa" EntitySet="Faixas" />
@@ -701,7 +701,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="ItemsNotaFiscal">
+          <EntitySetMapping Name="ItemNotaFiscals">
             <EntityTypeMapping TypeName="AluraTunesModel.ItemNotaFiscal">
               <MappingFragment StoreEntitySet="ItemNotaFiscal">
                 <ScalarProperty Name="ItemNotaFiscalId" ColumnName="ItemNotaFiscalId" />
@@ -712,7 +712,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="NotasFiscais">
+          <EntitySetMapping Name="NotaFiscals">
             <EntityTypeMapping TypeName="AluraTunesModel.NotaFiscal">
               <MappingFragment StoreEntitySet="NotaFiscal">
                 <ScalarProperty Name="NotaFiscalId" ColumnName="NotaFiscalId" />

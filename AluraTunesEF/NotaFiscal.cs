@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace AluraTunesEF
+namespace AluraTunesData
 {
     using System;
     using System.Collections.Generic;
@@ -17,7 +17,7 @@ namespace AluraTunesEF
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public NotaFiscal()
         {
-            this.ItemsNotaFiscal = new HashSet<ItemNotaFiscal>();
+            this.ItemNotaFiscals = new HashSet<ItemNotaFiscal>();
         }
     
         public int NotaFiscalId { get; set; }
@@ -32,6 +32,6 @@ namespace AluraTunesEF
     
         public virtual Cliente Cliente { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ItemNotaFiscal> ItemsNotaFiscal { get; set; }
+        public virtual ICollection<ItemNotaFiscal> ItemNotaFiscals { get; set; }
     }
 }

@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace AluraTunesEF
+namespace AluraTunesData
 {
     using System;
     using System.Collections.Generic;
